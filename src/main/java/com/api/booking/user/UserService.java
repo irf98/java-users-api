@@ -1,6 +1,5 @@
 package com.api.booking.user;
 
-import com.api.booking.exception.ApiNotFoundException;
 import com.api.booking.exception.ApiRequestException;
 import com.api.booking.registration.token.ConfirmationToken;
 import com.api.booking.registration.token.ConfirmationTokenService;
@@ -12,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -59,7 +59,12 @@ public class UserService implements UserDetailsService {
         return token;
     }
 
-    public int enableAppUser(String email) {
-        return userRepository.enableAppUser(email);
+    public void enableUser(String email) {
+        userRepository.enableAppUser(email);
     }
+
+    public List<User> getUsers() {
+        return userRepository.findAll();
+    }
+
 }

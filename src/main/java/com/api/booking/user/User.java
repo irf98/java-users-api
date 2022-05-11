@@ -70,7 +70,7 @@ public class User implements UserDetails {
         this.password = password;
         this.userRole = userRole;
     }
-    
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority authority =
